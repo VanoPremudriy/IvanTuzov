@@ -1,0 +1,57 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int kup[] = new int[4];
+        int kup2[] = new int [4];
+
+        System.out.println("Введите количество купюр, номиналом 1000, 500, 100, 30.");
+
+        for (int i=0;i<4;i++)  kup[i] = in.nextInt();
+
+        System.out.println("Введите нужную сумму");
+
+        int sum=in.nextInt(),sum1=0;
+
+        while ((kup[3]>0) && ((sum-sum1)%100!=0) && (sum1<sum)) {
+            sum1+=30;
+            kup[3]--;
+            kup2[3]++;
+        }
+
+        while ((kup[0])>0 && (sum1<sum)) {
+            sum1+=1000;
+            kup[0]--;
+            kup2[0]++;
+        }
+        if (sum1>sum) {sum1-=1000; kup2[0]--;}
+
+        while ((kup[1]>0) && (sum1<sum)) {
+            sum1+=500;
+            kup[1]--;
+            kup2[1]++;
+        }
+        if (sum1>sum) {sum1-=500; kup2[1]--;}
+
+        while ((kup[2]>0) && (sum1<sum)) {
+            sum1+=100;
+            kup[2]--;
+            kup2[2]++;
+        }
+        if (sum1>sum) {sum1-=100; kup2[2]--;}
+
+        if (sum1==sum){
+            System.out.print("Ответ: ");
+            if (kup2[0]!=0) for (int i=0;i<kup2[0];i++) System.out.print(1000+", ");
+            if (kup2[1]!=0) for (int i=0;i<kup2[1];i++) System.out.print(500+", ");
+            if (kup2[2]!=0) for (int i=0;i<kup2[2];i++) System.out.print(100+", ");
+            if (kup2[3]!=0) for (int i=0;i<kup2[3];i++) System.out.print(30+", ");
+            System.out.print("\b\b");
+
+        }
+        else System.out.print("Ошибка. Невозможно получить сумму, равную "+sum+" из данных купюр.");
+    }
+}
