@@ -1,0 +1,37 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main  {
+
+	public static void main (String[] args) {
+		String a,b ="",delete="";
+		int i;
+		Scanner in = new Scanner(System.in);
+		a = in.next();
+		boolean t = true;
+		for (i=0;i<a.length();i++) {
+			if (a.charAt(i)=='[') b = b + ']';
+			if (a.charAt(i)=='(') b = b + ')';
+			if (a.charAt(i)=='{') b = b + '}';
+
+			if (((a.charAt(i)=='}') || (a.charAt(i)==')') || (a.charAt(i)==']'))) {
+				if (b.length()!=0) {
+					if (a.charAt(i) != b.charAt(b.length() - 1)) {
+						t = false;
+						break;
+					}
+				} else t=false;
+				if (b.length()!=0) b = b.substring(0, b.length() - 1);
+			}
+		}
+		if ((a.charAt(0)==']') || (a.charAt(0)=='}') || (a.charAt(0)==')')) {
+			t=false;
+		}
+		if (((a.charAt(a.length()-1)) == '[') || ((a.charAt(a.length()-1)) == '{') || ((a.charAt(a.length()-1)) == '(')) {
+			t=false;
+		}
+		if (t==true) System.out.print("Верная комбинация скобок.");
+		else System.out.print("Ошибка. Неверная последовательность скобок.");
+	}
+}
