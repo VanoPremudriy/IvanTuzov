@@ -2,12 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Main  {
+public class lab1  {
 
 	public static void main (String[] args) {
-		String a,b ="",delete="";
+		String a,b ="";
 		int i;
 		Scanner in = new Scanner(System.in);
+		System.out.println("Введите комбинацию скобок.");
 		a = in.next();
 		boolean t = true;
 		for (i=0;i<a.length();i++) {
